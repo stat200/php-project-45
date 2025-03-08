@@ -12,4 +12,3 @@ function prompt(string $question): string
 {
     return cli\prompt($question);
 }
-

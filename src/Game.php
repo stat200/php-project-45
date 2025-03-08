@@ -46,5 +46,4 @@ function game($game)
         line(call_user_func("{$game}\\getFinishMessage", $answer, $name, $correctAnswer));
         break;
     }
-
 }
