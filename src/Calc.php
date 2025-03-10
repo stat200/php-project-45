@@ -54,10 +54,13 @@ function getCorrectAnswer(string $question): string
         case '-';
             if ("{$members[0]} {$operation} {$members[1]}" === $question) {
                 return (string) $members[0] - $members[1];
-            } elseif ("{$members[1]} {$operation} {$members[0]}" === $question) {
-                return (string) $members[1] - $members[0];
-            } else {
-                throw new \Exception('Eexpressions aren\'t identical');
             }
+
+            if ("{$members[1]} {$operation} {$members[0]}" === $question) {
+                return (string) $members[1] - $members[0];
+            }
+
+        default:
+            throw new \Exception('Expressions aren\'t identical');
     }
 }
