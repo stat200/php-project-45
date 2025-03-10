@@ -48,10 +48,10 @@ function getCorrectAnswer(string $question): string
         case '+':
             return (string) array_sum($members);
 
-        case '*';
+        case '*':
             return (string) array_product($members);
 
-        case '-';
+        case '-':
             if ("{$members[0]} {$operation} {$members[1]}" === $question) {
                 return (string) $members[0] - $members[1];
             }
