@@ -23,9 +23,9 @@ function getFinishMessage(string $answer, string $name, string $correctAnswer): 
     return "{$answer} is wrong answer ;(. Correct answer was {$correctAnswer}.\nLet's try again, {$name}!";
 }
 
-function getQuestion()
+function getQuestion(): string
 {
-    return rand(1, 100);
+    return (string) rand(1, 100);
 }
 
 function getCorrectAnswer(string $question): string
@@ -40,5 +40,5 @@ function getCorrectAnswer(string $question): string
 
 function isEven(int $number): bool
 {
-    return $number % 2 === 0;
+    return !($number & 1);
 }
