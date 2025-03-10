@@ -29,6 +29,14 @@ function playGame($gameName): void
     game($game);
 }
 
+function getCorrectMessage($counter, $name):string
+{
+    if ($counter === ATTEMPTS-1) {
+        return "Congratulations, {$name}!";
+    }
+    return 'Correct!';
+}
+
 function game($game)
 {
     $name = getName();
@@ -39,11 +47,10 @@ function game($game)
         line("Question: {$question}");
         $answer = getAnswer();
         $correctAnswer = call_user_func("{$game}\\getCorrectAnswer", $question);
-        if (call_user_func("{$game}\\isAnswerCorrect", $answer, $correctAnswer)) {
-            line(call_user_func("{$game}\\getCorrectMessage"));
-            continue;
+        if (!call_user_func("{$game}\\isAnswerCorrect", $answer, $correctAnswer)) {
+            line(call_user_func("{$game}\\getFinishMessage", $answer, $name, $correctAnswer));
+            break;
         }
-        line(call_user_func("{$game}\\getFinishMessage", $answer, $name, $correctAnswer));
-        break;
+        line(getCorrectMessage($i, $name));
     }
 }
