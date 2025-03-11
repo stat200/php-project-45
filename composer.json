@@ -5,7 +5,8 @@
             "src/Game.php",
             "src/Cli.php",
             "src/Even.php",
-            "src/Calc.php"
+            "src/Calc.php",
+            "src/Gcd.php"
         ],
         "psr-4": {
             "Hexlet\\Code\\": "src/"
@@ -19,7 +20,13 @@
         }
     ],
     "bin": [
-        "bin/brain-games"
+        "bin/brain-games",
+        "bin/brain-even",
+        "bin/brain-calc",
+        "bin/brain-gcd"
     ],
-    "require": {}
+    "require": {
+      "ext-gmp": "*",
+        "wp-cli/php-cli-tools": "^0.12.4"
+    }
 }

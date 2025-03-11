@@ -14,3 +14,9 @@ lint:
 
 brain-even:
 	./bin/brain-even
+
+brain-even:
+	./bin/brain-calc
+
+brain-even:
+	./bin/brain-gcd
