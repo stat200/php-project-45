@@ -8,16 +8,6 @@ function getRules()
     return RULES;
 }
 
-function isAnswerCorrect(string $answer, string $correctAnswer): bool
-{
-    return $correctAnswer === $answer;
-}
-
-function getFinishMessage(string $answer, string $name, string $correctAnswer): string
-{
-    return "{$answer} is wrong answer ;(. Correct answer was {$correctAnswer}.\nLet's try again, {$name}!";
-}
-
 function getQuestion(): string
 {
     return (string) rand(1, 100);
