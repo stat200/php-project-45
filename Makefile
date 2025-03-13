@@ -20,3 +20,9 @@ brain-even:
 
 brain-even:
 	./bin/brain-gcd
+
+brain-even:
+	./bin/brain-ap
+
+brain-even:
+	./bin/brain-pn

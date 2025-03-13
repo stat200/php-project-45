@@ -54,4 +54,3 @@ function getCorrectAnswer(string $question): string
 
     return (string) ($apFiltered[$apFilteredLength - 1] + $step);
 }
-
