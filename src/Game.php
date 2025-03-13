@@ -25,7 +25,7 @@ function getName(): string
 
 function getAnswer(): string
 {
-    return prompt('Your answer: ');
+    return prompt('Your answer');
 }
 
 function getGame($game): string
@@ -41,7 +41,7 @@ function playGame($gameName): void
 
 function getCorrectMessage($counter, $name):string
 {
-    if ($counter === ATTEMPTS-1) {
+    if ($counter === ATTEMPTS - 1) {
         return "Congratulations, {$name}!";
     }
     return 'Correct!';
@@ -57,7 +57,7 @@ function game($game)
         line("Question: {$question}");
         $answer = getAnswer();
         $correctAnswer = call_user_func("{$game}\\getCorrectAnswer", $question);
-        if (isAnswerCorrect($answer, $correctAnswer)) {
+        if (!isAnswerCorrect($answer, $correctAnswer)) {
             line(getFinishMessage($answer, $name, $correctAnswer));
             break;
         }

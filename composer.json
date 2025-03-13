@@ -6,7 +6,8 @@
             "src/Cli.php",
             "src/Even.php",
             "src/Calc.php",
-            "src/Gcd.php"
+            "src/Gcd.php",
+            "src/Ap.php"
         ],
         "psr-4": {
             "Hexlet\\Code\\": "src/"
