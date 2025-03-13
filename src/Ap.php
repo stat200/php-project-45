@@ -34,7 +34,7 @@ function getCorrectAnswer(string $question): string
         return (string) $apFiltered[1] - $step / 2;
     }
     if ($diff > $step) {
-        return (string) $apFiltered[1] + $step;
+        return (string) ($apFiltered[1] + $step);
     }
 
     for ($i = 2; $i < $apFilteredLength - 1; $i++) {
@@ -44,7 +44,7 @@ function getCorrectAnswer(string $question): string
             continue;
         };
 
-        return (string) $apFiltered[$i] + $step;
+        return (string) ($apFiltered[$i] + $step);
     }
 
     $strPos = strpos($question, TEMPLATE);
@@ -52,6 +52,6 @@ function getCorrectAnswer(string $question): string
         return (string) $apFiltered[0] - $step;
     }
 
-    return (string) $apFiltered[$apFilteredLength - 1] + $step;
+    return (string) ($apFiltered[$apFilteredLength - 1] + $step);
 }
 
