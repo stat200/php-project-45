@@ -1,4 +1,5 @@
 <?php
+
 namespace BrainGames\Gcd;
 
 const RULES = 'Find the greatest common divisor of given numbers.';
@@ -17,7 +18,7 @@ function getQuestion(): string
 
 function getCorrectAnswer(string $question): string
 {
-    $gcd = function ($a, $b) use (&$gcd){
+    $gcd = function ($a, $b) use (&$gcd) {
         return $b ? $gcd($b, $a % $b) : $a;
     };
 

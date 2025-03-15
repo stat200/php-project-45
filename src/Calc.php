@@ -1,4 +1,5 @@
 <?php
+
 namespace BrainGames\Calc;
 
 const RULES = 'What is the result of the expression?';
@@ -18,12 +19,9 @@ function getQuestion(): string
     $number1 = rand(0, 100);
     $number2 = rand(0, 100);
     $key = array_rand(OPERATIONS);
-    return "{$number1} ".OPERATIONS[$key]." {$number2}";
+    return "{$number1} " . OPERATIONS[$key] . " {$number2}";
 }
 
-/**
- * @throws \Exception
- */
 function getCorrectAnswer(string $question): string
 {
     $expression = explode(' ', $question);

@@ -1,4 +1,5 @@
 <?php
+
 namespace BrainGames\Ap;
 
 const RULES = 'What number is missing in the progression?';

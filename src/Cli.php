@@ -1,4 +1,5 @@
 <?php
+
 namespace BrainGames\Cli;
 
 use cli;

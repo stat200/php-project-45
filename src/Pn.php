@@ -1,4 +1,5 @@
 <?php
+
 namespace BrainGames\Pn;
 
 const RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
@@ -22,13 +23,16 @@ function getCorrectAnswer(string $question): string
 
     return $answers[(int) isPn((int) $question)];
 }
-
 function isPn( int $number): bool
 {
-    if ( $number <= 1) return false;
+    if ( $number <= 1) {
+        return false;
+    }
 
     for ($i = 2; $i < $number; $i++) {
-        if ($number % $i == 0) return false;
+        if ($number % $i == 0) {
+            return false;
+        }
     }
 
     return true;

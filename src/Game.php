@@ -39,7 +39,7 @@ function playGame($gameName): void
     game($game);
 }
 
-function getCorrectMessage($counter, $name):string
+function getCorrectMessage($counter, $name): string
 {
     if ($counter === ATTEMPTS - 1) {
         return "Congratulations, {$name}!";
