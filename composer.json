@@ -25,7 +25,9 @@
         "bin/brain-games",
         "bin/brain-even",
         "bin/brain-calc",
-        "bin/brain-gcd"
+        "bin/brain-gcd",
+        "bin/brain-progression",
+        "bin/brain-prime"
     ],
     "require": {
       "wp-cli/php-cli-tools": "^0.12.4"
