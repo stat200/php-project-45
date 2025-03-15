@@ -24,6 +24,7 @@ function getQuestion(): string
 
 /**
  * @throws \Exception
+ * no break
  */
 function getCorrectAnswer(string $question): string
 {
