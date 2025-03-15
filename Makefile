@@ -15,14 +15,14 @@ lint:
 brain-even:
 	./bin/brain-even
 
-brain-even:
+brain-calc:
 	./bin/brain-calc
 
-brain-even:
+brain-gcd:
 	./bin/brain-gcd
 
-brain-even:
-	./bin/brain-ap
+brain-progression:
+	./bin/brain-progression
 
-brain-even:
-	./bin/brain-pn
+brain-prime:
+	./bin/brain-prime
