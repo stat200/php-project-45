@@ -24,7 +24,6 @@ function getQuestion(): string
 
 /**
  * @throws \Exception
- * no break
  */
 function getCorrectAnswer(string $question): string
 {
@@ -51,6 +50,7 @@ function getCorrectAnswer(string $question): string
             if ("{$members[1]} {$operation} {$members[0]}" === $question) {
                 return (string) $members[1] - $members[0];
             }
+        //no break
 
         default:
             throw new \Exception('Expressions aren\'t identical');
