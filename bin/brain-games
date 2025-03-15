@@ -11,4 +11,4 @@ require_once $autoloadPath1;
     require_once $autoloadPath2;
 }
 
-echo "Welcome to the Brain Games!";
+\BrainGames\Cli\greeting();
