@@ -23,9 +23,9 @@ function getCorrectAnswer(string $question): string
 
     return $answers[(int) isPn((int) $question)];
 }
-function isPn( int $number): bool
+function isPn(int $number): bool
 {
-    if ( $number <= 1) {
+    if ($number <= 1) {
         return false;
     }
 
