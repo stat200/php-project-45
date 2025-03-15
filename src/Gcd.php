@@ -17,7 +17,10 @@ function getQuestion(): string
 
 function getCorrectAnswer(string $question): string
 {
-    [$number1, $number2] = explode(' ', $question);
-    return gmp_strval(gmp_gcd($number1, $number2));
-}
+    $gcd = function ($a, $b) use (&$gcd){
+        return $b ? $gcd($b, $a % $b) : $a;
+    };
 
+    $numbers = explode(' ', $question);
+    return array_reduce($numbers, $gcd);
+}
