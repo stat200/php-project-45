@@ -18,10 +18,14 @@ function getQuestion(): string
 
 function getCorrectAnswer(string $question): string
 {
-    $gcd = function ($a, $b) use (&$gcd) {
-        return $b ? $gcd($b, $a % $b) : $a;
-    };
-
-    $numbers = explode(' ', $question);
-    return array_reduce($numbers, $gcd);
+    [$number1, $number2] = explode(' ', $question);
+    if ((int) $number1 === 0 && (int) $number2 === 0) {
+        return "0";
+    }
+    while ($number2 != 0) {
+        $temp = $number2;
+        $number2 = $number1 % $number2;
+        $number1 = $temp;
+    }
+    return (string) abs($number1);
 }
