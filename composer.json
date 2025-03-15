@@ -28,7 +28,6 @@
         "bin/brain-gcd"
     ],
     "require": {
-      "ext-gmp": "*",
-        "wp-cli/php-cli-tools": "^0.12.4"
+      "wp-cli/php-cli-tools": "^0.12.4"
     }
 }
