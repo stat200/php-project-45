@@ -2,6 +2,8 @@
 
 namespace BrainGames\Calc;
 
+use function BrainGames\Helper\strToIntHelper;
+
 const RULES = 'What is the result of the expression?';
 const OPERATIONS = [
     '+',
@@ -31,9 +33,7 @@ function getCorrectAnswer(string $question): string
     $operation = array_values(array_intersect($expression, OPERATIONS))[0];
 
     $members = array_values(array_filter($expression, fn($item) => $item !== $operation));
-    if (count($members) !== 2) {
-        throw new \Exception('Wrong number of members');
-    }
+    $members = strToIntHelper($members);
 
     switch ($operation) {
         case '+':
@@ -44,11 +44,11 @@ function getCorrectAnswer(string $question): string
 
         case '-':
             if ("{$members[0]} {$operation} {$members[1]}" === $question) {
-                return (string) $members[0] - $members[1];
+                return (string) ($members[0] - $members[1]);
             }
 
             if ("{$members[1]} {$operation} {$members[0]}" === $question) {
-                return (string) $members[1] - $members[0];
+                return (string) ($members[1] - $members[0]);
             }
         //no break
 

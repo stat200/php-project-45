@@ -2,6 +2,8 @@
 
 namespace BrainGames\Gcd;
 
+use function BrainGames\Helper\strToIntHelper;
+
 const RULES = 'Find the greatest common divisor of given numbers.';
 
 function getRules()
@@ -18,8 +20,10 @@ function getQuestion(): string
 
 function getCorrectAnswer(string $question): string
 {
-    [$number1, $number2] = explode(' ', $question);
-    if ((int) $number1 === 0 && (int) $number2 === 0) {
+    $numbers = explode(' ', $question);
+    $numbers = strToIntHelper($numbers);
+    [$number1, $number2] = $numbers;
+    if ($number1 === 0 && $number2 === 0) {
         return "0";
     }
     while ($number2 != 0) {

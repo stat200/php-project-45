@@ -2,6 +2,8 @@
 
 namespace BrainGames\Ap;
 
+use function BrainGames\Helper\strToIntHelper;
+
 const RULES = 'What number is missing in the progression?';
 const APLENGTH = 10;
 const TEMPLATE = '..';
@@ -26,13 +28,14 @@ function getCorrectAnswer(string $question): string
 {
     $ap = explode(' ', $question);
     $apFiltered = array_filter($ap, fn($item) => $item !== '..');
+    $apFiltered = strToIntHelper($apFiltered);
     sort($apFiltered);
     $apFilteredLength = count($apFiltered);
     $step = $apFiltered[1] - $apFiltered[0];
     $diff = $apFiltered[2] - $apFiltered[1];
 
     if ($step > $diff) {
-        return (string) $apFiltered[1] - $step / 2;
+        return (string) ($apFiltered[1] - $step / 2);
     }
     if ($diff > $step) {
         return (string) ($apFiltered[1] + $step);
@@ -50,7 +53,7 @@ function getCorrectAnswer(string $question): string
 
     $strPos = strpos($question, TEMPLATE);
     if ($strPos === 0) {
-        return (string) $apFiltered[0] - $step;
+        return (string) ($apFiltered[0] - $step);
     }
 
     return (string) ($apFiltered[$apFilteredLength - 1] + $step);
