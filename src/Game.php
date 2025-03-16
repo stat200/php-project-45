@@ -28,18 +28,18 @@ function getAnswer(): string
     return prompt('Your answer');
 }
 
-function getGame($game): string
+function getGame(string $game): string
 {
     return "BrainGames\\{$game}";
 }
 
-function playGame($gameName): void
+function playGame(string $gameName): void
 {
     $game = getGame($gameName);
     game($game);
 }
 
-function getCorrectMessage($counter, $name): string
+function getCorrectMessage(int $counter, string $name): string
 {
     if ($counter === ATTEMPTS - 1) {
         return "Congratulations, {$name}!";
@@ -47,16 +47,16 @@ function getCorrectMessage($counter, $name): string
     return 'Correct!';
 }
 
-function game($game)
+function game(string $game)
 {
     $name = getName();
     line("Hello, {$name}!");
-    line(call_user_func("{$game}\\getRules"));
+    line("{$game}\\getRules"());
     for ($i = 0; $i < ATTEMPTS; $i++) {
-        $question = call_user_func("{$game}\\getQuestion");
+        $question = "{$game}\\getQuestion"();
         line("Question: {$question}");
         $answer = getAnswer();
-        $correctAnswer = call_user_func("{$game}\\getCorrectAnswer", $question);
+        $correctAnswer = "{$game}\\getCorrectAnswer"($question);
         if (!isAnswerCorrect($answer, $correctAnswer)) {
             line(getFinishMessage($answer, $name, $correctAnswer));
             break;
