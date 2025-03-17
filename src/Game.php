@@ -54,22 +54,25 @@ function game(string $game): void
 {
     $name = getName();
     line("Hello, {$name}!");
-    if (!is_callable("{$game}\\getRules")) {
+    if (is_callable("{$game}\\getRules")) {
+        $rules = "{$game}\\getRules"();
+    } else {
         throw new \Exception("Brain Games does not support getRules");
     }
-    $rules = "{$game}\\getRules"();
     line($rules);
     for ($i = 0; $i < ATTEMPTS; $i++) {
-        if (!is_callable("{$game}\\getQuestion")) {
+        if (is_callable("{$game}\\getQuestion")) {
+            $question = "{$game}\\getQuestion"();
+        } else {
             throw new \Exception("Brain Games does not support getQuestion");
         }
-        $question = "{$game}\\getQuestion"();
         line("Question: {$question}");
         $answer = getAnswer();
-        if (!is_callable("{$game}\\getCorrectAnswer")) {
+        if (is_callable("{$game}\\getCorrectAnswer")) {
+            $correctAnswer = "{$game}\\getCorrectAnswer"($question);
+        } else {
             throw new \Exception("Brain Games does not support getCorrectAnswer");
         }
-        $correctAnswer = "{$game}\\getCorrectAnswer"($question);
         if (!isAnswerCorrect($answer, $correctAnswer)) {
             line(getFinishMessage($answer, $name, $correctAnswer));
             break;
