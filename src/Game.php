@@ -47,16 +47,32 @@ function getCorrectMessage(int $counter, string $name): string
     return 'Correct!';
 }
 
+/**
+ * @throws \Exception
+ */
 function game(string $game)
 {
     $name = getName();
     line("Hello, {$name}!");
-    line("{$game}\\getRules"());
+    try {
+        $rules = "{$game}\\getRules"();
+    } catch (\Exception $e) {
+        throw new \Exception($e->getMessage());
+    }
+    line($rules);
     for ($i = 0; $i < ATTEMPTS; $i++) {
-        $question = "{$game}\\getQuestion"();
+        try {
+            $question = "{$game}\\getQuestion"();
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
         line("Question: {$question}");
         $answer = getAnswer();
-        $correctAnswer = "{$game}\\getCorrectAnswer"($question);
+        try {
+            $correctAnswer = "{$game}\\getCorrectAnswer"($question);
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
         if (!isAnswerCorrect($answer, $correctAnswer)) {
             line(getFinishMessage($answer, $name, $correctAnswer));
             break;

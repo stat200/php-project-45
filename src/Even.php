@@ -26,5 +26,5 @@ function getCorrectAnswer(string $question): string
 
 function isEven(int $number): bool
 {
-    return !($number & 1);
+    return (bool) !($number & 1);
 }
