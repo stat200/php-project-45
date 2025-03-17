@@ -50,30 +50,26 @@ function getCorrectMessage(int $counter, string $name): string
 /**
  * @throws \Exception
  */
-function game(string $game)
+function game(string $game): void
 {
     $name = getName();
     line("Hello, {$name}!");
     if (!is_callable("{$game}\\getRules")) {
         throw new \Exception("Brain Games does not support getRules");
     }
-    $rules = call_user_func("{$game}\\getRules");
+    $rules = "{$game}\\getRules"();
     line($rules);
     for ($i = 0; $i < ATTEMPTS; $i++) {
-        try {
-            if (!is_callable("{$game}\\getQuestion")) {
-                throw new \Exception("Brain Games does not support getQuestion");
-            }
-            $question = call_user_func("{$game}\\getQuestion");
-        } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
+        if (!is_callable("{$game}\\getQuestion")) {
+            throw new \Exception("Brain Games does not support getQuestion");
         }
+        $question = "{$game}\\getQuestion"();
         line("Question: {$question}");
         $answer = getAnswer();
         if (!is_callable("{$game}\\getCorrectAnswer")) {
             throw new \Exception("Brain Games does not support getCorrectAnswer");
         }
-        $correctAnswer = call_user_func("{$game}\\getCorrectAnswer", $question);
+        $correctAnswer = "{$game}\\getCorrectAnswer"($question);
         if (!isAnswerCorrect($answer, $correctAnswer)) {
             line(getFinishMessage($answer, $name, $correctAnswer));
             break;
