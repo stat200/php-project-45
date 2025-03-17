@@ -54,14 +54,14 @@ function game(string $game)
 {
     $name = getName();
     line("Hello, {$name}!");
-    if (!!is_callable("{$game}\\getRules")) {
+    if (!is_callable("{$game}\\getRules")) {
         throw new \Exception("Brain Games does not support getRules");
     }
     $rules = call_user_func("{$game}\\getRules");
     line($rules);
     for ($i = 0; $i < ATTEMPTS; $i++) {
         try {
-            if (!!is_callable("{$game}\\getQuestion")) {
+            if (!is_callable("{$game}\\getQuestion")) {
                 throw new \Exception("Brain Games does not support getQuestion");
             }
             $question = call_user_func("{$game}\\getQuestion");
@@ -70,7 +70,7 @@ function game(string $game)
         }
         line("Question: {$question}");
         $answer = getAnswer();
-        if (!!is_callable("{$game}\\getCorrectAnswer")) {
+        if (!is_callable("{$game}\\getCorrectAnswer")) {
             throw new \Exception("Brain Games does not support getCorrectAnswer");
         }
         $correctAnswer = call_user_func("{$game}\\getCorrectAnswer", $question);
