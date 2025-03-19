@@ -54,8 +54,9 @@ function game(string $game): void
 {
     $name = getName();
     line("Hello, {$name}!");
-    if (is_callable("{$game}\\getRules")) {
-        $rules = "{$game}\\getRules"();
+    $getRules = "{$game}\\getRules";
+    if (is_callable($getRules)) {
+        $rules = $getRules();
     } else {
         throw new \Exception("Brain Games does not support getRules");
     }
